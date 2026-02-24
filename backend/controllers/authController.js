@@ -93,4 +93,12 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser = (req, res) => {
+    res.cookie('jwt', '', {
+        httpOnly: true,
+        expires: new Date(0), // Sets the expiration date to the past so it deletes instantly
+    });
+    
+    res.status(200).json({ message: 'Logged out successfully' });
+};
+module.exports = { registerUser, loginUser, logoutUser };

@@ -10,7 +10,7 @@ const upload = require('../middlewares/uploadMiddleware');
 
 // 1. Create a new post (With Media)
 // 👉 FIXED: Sirf ek baar rakha hai Multer ke saath
-router.post('/',  upload.single('media'), createPost);
+router.post('/',protect ,  upload.single('media'), createPost);
 
 // 2. Get all posts
 router.get('/', protect, getAllPosts);
